@@ -16,7 +16,7 @@
  <li><a href="http://www.kde.org/applications/utilities/kleopatra/">[linux] kleopatra</a>, <br>
  <li><a href="http://www.gpg4win.org">[windows] GPG4win</a><br>
  <li><a href="https://gpgtools.org/">[mac] Gpgtools</a><br>
- <li><a href="https://play.google.com/store/apps/details?id=org.thialfihar.android.apg">[Android] Apg</a><br>
+ <li><a href="https://play.google.com/store/apps/details?id=org.thialfihar.android.apg">[Android] Apg</a> (Some random unknown error)<br>
  <li><a href="https://ipgmail.com/">[ios] Ipgmail</a><br>
  
  [...]
