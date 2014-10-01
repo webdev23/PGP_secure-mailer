@@ -1,5 +1,7 @@
-<!doctype html>
-<html>
+<?php
+//Here come the recipient email 
+$destinataire='change@me.now';
+?>
 <head>
 <meta charset="utf-8">	
 <meta name="description" content="Secure way to send a message, using openPGP encryption. Nothing to configure, here you go." />
@@ -7,15 +9,12 @@
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
 <body>
-<!--*************************************************************-->
-<!--PGP SECURE MESSAGER V0.1 | Nico made this shit | WTF licence -->
-<!--*************************************************************-->
+<!--*************************************************************-->	
+<!--PGP SECURE MAILER V0.2 -- kRAZHTEST @user23.net
+<!--*************************************************************-->	
 <!--Compatible with all PGP programs | Libs: OpenPGP.js, jquery  -->
 <!--*************************************************************-->
-<?php
-//Here come the recipient email 
-$destinataire='change@me.now';
-?>
+
 <header id="title">
 	<div style="display:inline;min-width:700px">
     <img src="lock.png" style="float:left;" alt="PGP Secure Mailer" title="PGP Secure Mailer" />
@@ -23,6 +22,7 @@ $destinataire='change@me.now';
 		<p style="display:inline;min-width:300px">Send client-side PGP encypted message to any mail address</p>
 		<p style="font-size:0.6em"><a href="https://github.com/webdev23/PGP_secure-mailer">Source on github</a>&nbsp;|&nbsp;<a href="http://user23.net/pgp_secure-mailer/dev.php">Contact dev</a></p>
 	</header>	
+	<?php echo $_REQUEST['message'];  ?>
 	<section class="block" style="display:inline;min-width:300px">
 		<form action="#" method="post" onsubmit="return encrypt();"
 			name="submitform" id="submitform">
@@ -40,46 +40,23 @@ $destinataire='change@me.now';
     input{border:1px black dotted;width:50%;max-width:480px}
 </style>
 	<li><label>To:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-		<input style="max-width:180px" name="destinataire" tabindex="5" size="5" type="text" id="destinataire" value="<?php echo $destinataire; ?>">
+		<input style="max-width:180px" name="destinataire" tabindex="5" size="5" type="text" id="destinataire" value="<?php echo $_REQUEST['to'];  ?>">
  <li><span id='obj'><label for='objet'>Subject: 
-<input type='text' name='objet' id='objet' tabindex='10' size='5' value="<?php echo $objet; ?>" style="max-width:180px"><small>&nbsp;(Cleartext!)</small></label>
+<input type='text' name='objet' id='objet' tabindex='10' size='5' value="<?php echo $_REQUEST['subject'];  ?>" style="max-width:180px"><small>&nbsp;(Cleartext!)</small></label>
     						<li><label>Paste here the recipient public PGP key: </label><br>
-							<textarea id="public_key">
-			
------BEGIN PGP PUBLIC KEY BLOCK-----
-Version: GnuPG v2.0.22 (GNU/Linux)
-
-mQENBFQVEVoBCADQdxW67W00QS1zpz8WCJ4IDm/TVv94CWliFxU5NwPFWkozolx2
-uhPBfwIZZQ4Fge3KYbqwWskl+bf/CSYFFhxThvGQ3SYOStEI+BG1ZwEJ2Khdkj9v
-+2/sTkk6/uLIWE7A/4XHFDq0K/FNyNjEuq1XZPSw3R+VSTUrvDstEG0s8ksvdK4o
-4zSMvwOMiB/mnhgNuPqQjduF7tD6n/IgeaLkol4fx8S6kTeRBSry/jtJlEnG4kq1
-Z4trYwhHcBT4fjObtsBcyTesnTSvRWwrE+41mFDVsGDkV0CfsdNEn3avjcxxz6Gv
-9ZDgYd2Nrqq6bjLjcOs+B9g7sLRS9fOsvUabABEBAAG0GlRlc3Qga2V5IDxrcmF6
-aHRlc3RAeWEucnU+iQE5BBMBAgAjBQJUFRFaAhsPBwsJCAcDAgEGFQgCCQoLBBYC
-AwECHgECF4AACgkQa9X9eRVJLXu5Zwf7BCwzLDzclaVUsRQBBwfaosrUBEpQTafV
-w6/gFw7Kt+XQn5tq6BV2D3AOOIk/xl4fCSeqyWGITZtiViRmHuvmmFd2N10kTx+m
-CICc+W5btvFrUoOcjzUtr6S3IvdmEbmdhdsyE1zS8EV9SgSimT56BltCAQoS4a2T
-QjKaNy0Y3nebkq2T+DJ5Um3YW16kjigBlsqxQmPThRTGY2QFhq3LlrIhizeYU8Ta
-8xo3Bzkj4GwxBcQvRVCEGWSQNaYHzb2UNrdfWxjanjf4eC1J1G2gN+tXymHviSCQ
-VseyIpnaJYwlROL8sL+fle+fvJuVS2fpvl2IHMUOP53FT+SyyOjkRQ==
-=z/UQ
------END PGP PUBLIC KEY BLOCK-----
-   
-   </textarea>
+							<textarea id="public_key"><?php echo $_REQUEST['public_key'];  ?></textarea>
 	<li><label>From: <small>(your email for answer)</small> </label><br /> 
-		<input name="mail" tabindex="20" size="30" type="text" id="mail" value="<?php echo $mail; ?>">
+		<input name="mail" tabindex="20" size="30" type="text" id="mail" value="<?php echo $_REQUEST['from'];  ?>">
 			<li><label>Message: </label><br /> 
-				<textarea tabindex="30" rows="10" cols="40" name="message" id="message"><?php echo $message; ?></textarea>
+				<textarea tabindex="30" rows="10" cols="40" name="message" id="message"><?php echo $_REQUEST['message'];  ?></textarea>
 
 	</section>
 </li>
 </ul>
-<input name="envoi" tabindex="4" value="Send now" type="submit" style="border:0 30% 0 30%">
+<input name="envoi" tabindex="4" id="send_b" value="Send now" type="submit" style="border:0 30% 0 30%">
 </form>
 </section>
-<!--*************************************************************-->	
-<!--PGP SECURE MESSAGER V0.1 | Nico key right here | Replace it! -->
-<!--*************************************************************-->	
+
 	<section class="block">
 		<p>&nbsp;</p><p>&nbsp;</p>
 
@@ -107,7 +84,29 @@ VseyIpnaJYwlROL8sL+fle+fvJuVS2fpvl2IHMUOP53FT+SyyOjkRQ==
 			}
 		}
 	</script>
+
+<!-- Hidden form after encrption --> 
+<form style="display:none" id='contact' method="post" align="center" action="<?php echo $_SERVER['PHP_SELF'];?>" enctype="multipart/form-data">
+  <p id='obj'><label for='objet'>Objet du message :<br>
+  <input type='text' name='objet' id='objet' tabindex='10' size='30' value="<?php $_REQUEST['objet'];  ?>"></label></p> 
+
+  <p id="adr"><label for="mail">E-mail<br>
+  <input name="mail" tabindex="20" size="30" type="text" id="mail" value="<?php $_REQUEST['mail'];  ?>"></label></p>
+  
+  <p id="msg"><label for="message">Votre message<br>
+  <textarea tabindex="30" rows="10" cols="40" name="message" id="message" value=""><?php echo $_REQUEST['message'];  ?></textarea>
+  </label>
+
+</form>
+
+</div>	
+</div>
 <?php
+
+if (!empty($_REQUEST['send_now']) && $_REQUEST['send_now'] == yes ){
+echo '<script>document.getElementById("send_b").click();</script>';
+echo '<script>alert "Message sent";</script>';
+}
 $Previsualiser='<p class="bt">
 <input type="submit" name="previsualiser" tabindex="3" value="Pr&eacute;visualiser"></p>';
 $Envoi="\n".'<p class="bt">
@@ -195,20 +194,3 @@ else
   }
 $bas_formulaire=$Envoi;
 ?>
-<!-- Hidden form after encrption --> 
-<form style="display:none" id='contact' method="post" align="center" action="<?php echo $_SERVER['PHP_SELF'];?>" enctype="multipart/form-data">
-  <p id='obj'><label for='objet'>Objet du message :<br>
-  <input type='text' name='objet' id='objet' tabindex='10' size='30' value="<?php echo $objet; ?>"></label></p> 
-
-  <p id="adr"><label for="mail">E-mail<br>
-  <input name="mail" tabindex="20" size="30" type="text" id="mail" value="<?php echo $mail; ?>"></label></p>
-  
-  <p id="msg"><label for="message">Votre message<br>
-  <textarea tabindex="30" rows="10" cols="40" name="message" id="message"><?php echo $message; ?></textarea>
-  </label>
-<?php echo $bas_formulaire;?>
-</form>
-</div>	
-</div>
-</body>
-</html>
