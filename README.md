@@ -23,4 +23,4 @@
  
  
 <h6>Objective for v0.3: </h6>Make possibility to export as html file, with your public key in it. By this way you will get an easy way to be contacted from anywhere with zero config for your friends, only a browser. 
-
+Decent ultralight interface.
