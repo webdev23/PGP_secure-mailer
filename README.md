@@ -4,7 +4,7 @@
 <h6>Online@ http://user23.net/pgp_secure-mailer/</h6>
 
  PGP Secure mailer |  Send client-side PGP encypted message to any adress.<br>
- Or use it to be contacted with encryption easily, directly in browser, without displaying your email.<br>
+ Or use it to be contact with encryption easily, directly in browser, without displaying your email.<br>
  Encryption in browser with <a href='https://github.com/openpgpjs/openpgpjs'>openpgp.js.</a><br>
 <br>
 <h6>This app can now work with url parameters:</h6><br>
@@ -22,5 +22,5 @@
  [...]
  
  
- 
+<h6>Objective for v0.3: </h6>Make possibility to export as html file, with your public key in it. By this way you will get an easy way to be contacted from anywhere with zero config for your fiends. 
 
